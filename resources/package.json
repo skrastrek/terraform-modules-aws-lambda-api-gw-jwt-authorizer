@@ -1,0 +1,17 @@
+{
+  "name": "lambda-jwt-authorizer",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "dependencies": {
+    "aws-jwt-verify": "^4.0.1"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.145",
+    "@types/node": "^22.7.5",
+    "@aws-sdk/client-cognito-identity-provider": "^3.666.0",
+    "esbuild": "^0.24.0"
+  },
+  "scripts": {
+    "build": "esbuild src/index.ts --bundle --minify --platform=node --target=node20 --outdir=dist"
+  }
+}
