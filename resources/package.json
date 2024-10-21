@@ -1,6 +1,7 @@
 {
   "name": "lambda-jwt-authorizer",
   "version": "1.0.0",
+  "private": true,
   "main": "src/index.ts",
   "dependencies": {
     "aws-jwt-verify": "^4.0.1"
