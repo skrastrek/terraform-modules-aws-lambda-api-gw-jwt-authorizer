@@ -1,5 +1,5 @@
 {
-  "name": "lambda-jwt-authorizer",
+  "name": "lambda-api-gw-jwt-authorizer",
   "version": "1.0.0",
   "private": true,
   "main": "src/index.ts",
