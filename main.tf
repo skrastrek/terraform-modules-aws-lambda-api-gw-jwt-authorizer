@@ -1,5 +1,3 @@
-data "aws_region" "current" {}
-
 locals {
   resources_path = "${path.module}/resources"
 }
