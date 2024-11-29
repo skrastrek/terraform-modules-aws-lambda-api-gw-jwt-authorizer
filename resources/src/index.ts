@@ -39,12 +39,16 @@ const apiGatewayV2JwtAuthorizer = new ApiGatewayV2JwtAuthorizer(jwtSources, jwtV
 
 export const handlerV1: APIGatewayRequestAuthorizerWithContextHandler<AuthContextV1> = async event => {
     console.debug("Event:", JSON.stringify(event))
-    return apiGatewayV1JwtAuthorizer.authorize(event)
+    let result = await apiGatewayV1JwtAuthorizer.authorize(event)
+    console.debug("Result:", JSON.stringify(result))
+    return result
 }
 
 export const handlerV2: APIGatewayRequestSimpleAuthorizerHandlerV2WithContext<AuthContextV2> = async event => {
     console.debug("Event:", JSON.stringify(event))
-    return apiGatewayV2JwtAuthorizer.authorize(event)
+    let result = await apiGatewayV2JwtAuthorizer.authorize(event)
+    console.debug("Result:", JSON.stringify(result))
+    return result
 }
 
 function validateTokenUse(value?: string): TokenUse | undefined {
