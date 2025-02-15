@@ -1,4 +1,4 @@
-import {JwtRsaVerifier} from "aws-jwt-verify/jwt-rsa"
+import {JwtVerifier} from "aws-jwt-verify"
 import {
     APIGatewayRequestAuthorizerWithContextHandler,
     APIGatewayRequestSimpleAuthorizerHandlerV2WithContext
@@ -15,7 +15,7 @@ import {JwtPayload} from "aws-jwt-verify/jwt-model";
 
 const jwtSources = getJwtSourcesFromEnv()
 
-const jwtVerifier = JwtRsaVerifier.create([
+const jwtVerifier = JwtVerifier.create([
     {
         issuer: process.env.JWT_ISSUER!!,
         audience: process.env.JWT_AUDIENCE?.split(",") ?? null,

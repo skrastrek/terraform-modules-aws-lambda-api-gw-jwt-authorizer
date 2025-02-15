@@ -1,4 +1,4 @@
-import {JwtRsaVerifier} from "aws-jwt-verify/jwt-rsa";
+import {JwtVerifier} from "aws-jwt-verify";
 import {JwtPayload} from "aws-jwt-verify/jwt-model";
 import {
     APIGatewayAuthorizerWithContextResult,
@@ -15,7 +15,7 @@ export abstract class JwtAuthorizer<E, R, Attributes> {
 
     protected constructor(
         private readonly extractor: JwtExtractor<E>,
-        private readonly verifier: JwtRsaVerifier<any, any, any>,
+        private readonly verifier: JwtVerifier<any, any, any>,
         private readonly enricher: JwtEnricher<Attributes>,
     ) {
     }
@@ -46,7 +46,7 @@ export abstract class JwtAuthorizer<E, R, Attributes> {
 export class ApiGatewayV1JwtAuthorizer extends JwtAuthorizer<APIGatewayRequestAuthorizerEvent, APIGatewayAuthorizerWithContextResult<AuthContextV1>, UserAttributes> {
     constructor(
         jwtSources: JwtSources,
-        jwtVerifier: JwtRsaVerifier<any, any, any>,
+        jwtVerifier: JwtVerifier<any, any, any>,
         jwtEnricher: JwtEnricher<UserAttributes>,
     ) {
         super(jwtSources.v1JwtExtractor(), jwtVerifier, jwtEnricher);
@@ -75,7 +75,7 @@ export class ApiGatewayV1JwtAuthorizer extends JwtAuthorizer<APIGatewayRequestAu
 export class ApiGatewayV2JwtAuthorizer extends JwtAuthorizer<APIGatewayRequestAuthorizerEventV2, APIGatewaySimpleAuthorizerWithContextResult<AuthContextV2>, UserAttributes> {
     constructor(
         jwtSources: JwtSources,
-        jwtVerifier: JwtRsaVerifier<any, any, any>,
+        jwtVerifier: JwtVerifier<any, any, any>,
         jwtEnricher: JwtEnricher<UserAttributes>,
     ) {
         super(jwtSources.v2JwtExtractor(), jwtVerifier, jwtEnricher);
