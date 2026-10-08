@@ -7,7 +7,7 @@ resource "aws_iam_role" "this" {
 
 module "assume_role_policy_document" {
   source  = "skrastrek/iam/aws//modules/policy-document/service-assume-role"
-  version = "1.3.2"
+  version = "1.4.0"
 
   service_identifiers = ["lambda.amazonaws.com"]
 }
